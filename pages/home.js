@@ -31,7 +31,7 @@ function Home() {
       <main className="flex flex-col xl:flex-row items-center max-w-screen-lg mx-auto">
         <div className="space-y-6 xl:space-y-10">
           <h1 className="text-3xl md:text-5xl text-amber-800/80 max-w-xl !leading-snug pl-4 xl:pl-0">
-            Welcome to your professional community
+            Tunajuana, see posted networks by oaks!
           </h1>
           <div className="space-y-4">
             <div className="intent">
