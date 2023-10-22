@@ -2,8 +2,11 @@ import { Avatar } from "@mui/material";
 import Image from "next/image";
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
+import { signOut, useSession } from "next-auth/react";
+
 
 function Sidebar() {
+    const { data: session } = useSession();
   return (
     <div className="space-y-2 min-w-max max-w-lg">
       {/* Top */}
@@ -12,14 +15,19 @@ function Sidebar() {
           <Image src="https://rb.gy/i26zak" layout="fill" priority />
         </div>
         <Avatar
-          //onClick={signOut}
-          src="https://media.licdn.com/dms/image/D4D03AQHdffg9L7gO8Q/profile-displayphoto-shrink_800_800/0/1694941304480?e=1703721600&v=beta&t=G2U1gjkyEMOSTqQszVOEctGcedPvfafhwsszwkBww7g"
-          className="!h-14 !w-14 !border-2 !absolute !top-4 !cursor-pointer"
+          onClick={signOut}
+          src={session?.user?.image}
+           className="!h-14 !w-14 !border-2 !absolute !top-4 !cursor-pointer"
         />
         <div className="mt-5 py-4 space-x-0.5">
-          <h4 className="hover:underline decoration-purple-700 underline-offset-1 cursor-pointer"></h4>
+          <h4 className="hover:underline decoration-purple-700 underline-offset-1 cursor-pointer">
+            {session?.user?.name}
+          </h4>
 
-          <p className="text-black/60 dark:text-white/75 text-sm"></p>
+          <p className="text-black/60 dark:text-white/75 text-sm">
+          {session?.user?.email}
+
+          </p>
         </div>
 
         <div className="hidden md:inline text-left dark:text-white/75 text-sm">

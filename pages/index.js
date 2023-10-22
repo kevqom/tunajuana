@@ -2,6 +2,8 @@ import { getSession, useSession } from "next-auth/react";
 import Head from 'next/head'
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
+import { useRouter } from "next/router";
+
 
 
 export default function Home() {
@@ -26,7 +28,7 @@ export default function Home() {
       <main className="flex justify-center gap-x-5 px-4 sm:px-12">
         <div className="flex flex-col md:flex-row gap-5">
           <Sidebar />
-          {/* Feed */}
+          <Feed/>
         </div>
         {/* Widgets */}
       </main>
