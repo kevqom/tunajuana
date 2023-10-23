@@ -1,46 +1,22 @@
-import { useSession } from "next-auth/react";
+//import { useSession } from "next-auth/react";
 import { useState } from "react";
-import { useRecoilState } from "recoil";
-import { modalState } from "../atoms/modalAtom";
-import { handlePostState } from "../atoms/postAtom";
+//import { useRecoilState } from "recoil";
+//import { modalState } from "../atoms/modalAtom";
+//import { handlePostState } from "../atoms/postAtom";
 
 function Form() {
   const [input, setInput] = useState("");
   const [photoUrl, setPhotoUrl] = useState("");
-  const { data: session } = useSession();
-  const [modalOpen, setModalOpen] = useRecoilState(modalState);
-  const [handlePost, setHandlePost] = useRecoilState(handlePostState);
+  
+  console.log(input);
 
-  const uploadPost = async (e) => {
-    e.preventDefault();
-
-    const response = await fetch("/api/posts", {
-      method: "POST",
-      body: JSON.stringify({
-        input: input,
-        photoUrl: photoUrl,
-        username: session.user.name,
-        email: session.user.email,
-        userImg: session.user.image,
-        createdAt: new Date().toString(),
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const responseData = await response.json();
-    console.log(responseData);
-
-    setHandlePost(true);
-    setModalOpen(false);
-  };
+  const uploadPost = () => {};
 
   return (
     <form className="flex flex-col relative space-y-2 text-black/80 dark:text-white/75">
       <textarea
         rows="4"
-        placeholder="What do you want to talk about?"
+        placeholder="What do you want to talk about Oak?"
         className="bg-transparent focus:outline-none dark:placeholder-white/75"
         value={input}
         onChange={(e) => setInput(e.target.value)}
