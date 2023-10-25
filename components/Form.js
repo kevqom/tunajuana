@@ -10,7 +10,9 @@ function Form() {
   
   console.log(input);
 
-  const uploadPost = () => {};
+  const uploadPost = async (e) => {
+    e.preventDefault();
+  };
 
   return (
     <form className="flex flex-col relative space-y-2 text-black/80 dark:text-white/75">
